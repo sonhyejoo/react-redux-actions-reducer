@@ -1,0 +1,24 @@
+import articles from "../data/data.json";
+
+const LOAD_ARTICLES = "article/loadArticles";
+
+export const loadArticles = () => {
+  return {
+    type: LOAD_ARTICLES,
+    articles
+  };
+};
+
+let initialState = {
+  entries: [],
+  isLoading: true
+};
+
+export default function articleReducer(state = initialState, action) {
+  switch (action.type) {
+    case LOAD_ARTICLES:
+      return { ...state, entries: [...action.articles] };
+    default:
+      return state;
+  }
+}
